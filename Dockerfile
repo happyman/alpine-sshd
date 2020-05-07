@@ -1,5 +1,7 @@
-FROM alpine.base
-RUN apk update && apk upgrade && apk add --no-cache openssh openrc && rc-update add sshd && \  
+FROM alpine
+RUN apk update && apk upgrade && apk add --no-cache sudo wget curl \
+    tree elinks bash shadow procps util-linux coreutils binutils findutils grep \
+    openssh openrc && rc-update add sshd && \  
     # 設定 OpenSSH
     mkdir /run/openrc && touch /run/openrc/softlevel && rc-status &>/dev/null && \
     # 建立 sshup
